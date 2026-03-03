@@ -54,10 +54,49 @@
 
             <!-- Formulario -->
             <form id="registration-form" class="fade-in">
+
+                <div class="mb-4">
+                    <label for="grado" class="form-label fw-medium" >Grado</label>
+                    <select name="" id="grado" class="form-control custom-input" required>
+                        <option selected diseble>Grados</option>
+                        <option value="Alumno">Alumno</option>
+                        <option value="Arq.">Arq.</option>
+                        <option value="Arquitecta">Arquitecta</option>
+                        <option value="Arquitecto">Arquitecto</option>
+                        <option value="C."> C.</option>
+                        <option value="Ciudadano">Ciudadano</option>
+                        <option value="Dr.">Dr.</option>
+                        <option value="Dra.">Dra.</option>
+                        <option value="Egresada">Egresada</option>
+                        <option value="Egresado">Egresado</option>
+                        <option value="Estudiante">Estudiante</option>
+                        <option value="Estudiante de Ingeniería">Estudiante de Ingeniería</option>
+                        <option value="Estudiante de licenciatura">Estudiante de licenciatura</option>
+                        <option value="Ing.">Ing.</option>
+                        <option value="Lic.">Lic.</option>
+                        <option value="lic. en derecho">Lic. en derecho</option>
+                        <option value="Licenciada">Licenciada</option>
+                        <option value="Licenciada en Planificación para el Desarrollo Agropecuario">Licenciada en Planificación para el Desarrollo Agropecuario</option>
+                        <option value="Licenciado">Licenciado</option>
+                        <option value="Licenciatura">Licenciatura</option>
+                        <option value="M. en A.">M. en A.</option>
+                        <option value="M. en I.">M. en I.</option>
+                        <option value="MC.">MC.</option>
+                        <option value="Mtra.">Mtra.</option>
+                        <option value="Mtra. en Arq.">Mtra. en Arq.</option>
+                        <option value="Mtro.">Mtro.</option>
+                    </select>
+                </div>
+
                 <div class="mb-4">
                     <label for="nombre" class="form-label fw-medium">Nombre completo</label>
                     <input type="text" id="nombre" class="form-control custom-input" placeholder="Ej: María García"
                         required />
+                </div>
+
+                <div class="mb-4">
+                    <label for="correo" class="form-label fw-medium">Correo</label>
+                    <input type="email" id="correo" class="form-control custom-input" placeholder="Ej: correo@ejemplo.com" required>
                 </div>
 
                 <button id="submit-btn" type="submit" class="submit-btn w-100 mt-3">

@@ -27,6 +27,8 @@ const listaAsistentes = document.getElementById("attendees-list");
 
 const form = document.getElementById("registration-form");
 const nombreInput = document.getElementById("nombre");
+const gradoSeleccion = document.getElementById("grado");
+const correoInput = document.getElementById("correo");
 
 const loadingCard = document.getElementById("loading-card");
 const successCard = document.getElementById("success-card");
@@ -58,14 +60,15 @@ async function apiGet() {
 }
 
 // Petición HTTP POST
-async function apiPost(nombre) {
+async function apiPost(nombre, correo) {
   try {
     mostrarCardCarga();
 
     const response = await fetch(API_URL, {
       method: "POST",
       body: JSON.stringify({
-        NOMBRE: nombre
+        NOMBRE: nombre,
+        CORREO: correo
       })
     });
 
@@ -152,6 +155,10 @@ function renderizarPersonas(personas = []) {
     nombre.className = "persona-nombre";
     nombre.textContent = persona.nombre || persona.NOMBRE || "Sin nombre";
 
+    const correo = document.createElement("div");
+    correo.className = "persona-correo";
+    correo.textContent = persona.correo || persona.CORREO || "Sin correo";
+
     const fecha = document.createElement("div");
     fecha.className = "persona-fecha";
 
@@ -162,6 +169,7 @@ function renderizarPersonas(personas = []) {
     : "Sin fecha";
 
     div.appendChild(nombre);
+    div.appendChild(correo);
     div.appendChild(fecha);
 
     listaAsistentes.appendChild(div);
@@ -192,14 +200,28 @@ function iniciarFormulario() {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const grado = gradoSeleccion.value.trim();
     const nombre = nombreInput.value.trim();
+    const correo = correoInput.value.trim();
 
     if (!nombre) {
       alert("Escribe un nombre");
       return;
     }
 
-    await apiPost(nombre);
+    if(!grado || grado === "Grados"){
+      alert("Selecciona un grado");
+      return;
+    }
+
+    if(!correo){
+      alert("Escribe un correo");
+      return;
+    }
+
+    const nombreCompleto = `${grado} ${nombre}`;
+
+    await apiPost(nombreCompleto, correo);
   });
 }
 
